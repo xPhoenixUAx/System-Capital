@@ -1,0 +1,38 @@
+body {
+  background: var(--light);
+  color: var(--text-dark);
+}
+
+.site-header {
+  background: rgba(8,10,13,.88);
+}
+
+.legal-page {
+  padding: 150px 0 80px;
+}
+
+.legal-page .container {
+  max-width: 820px;
+}
+
+.legal-page h1 {
+  color: var(--text-dark);
+  margin-bottom: 30px;
+}
+
+.legal-page h2 {
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-size: 1.28rem;
+  line-height: 1.2;
+  margin-top: 34px;
+}
+
+.legal-page p {
+  color: var(--muted-dark);
+}
+
+.legal-page a {
+  color: #087b75;
+  font-weight: 800;
+}

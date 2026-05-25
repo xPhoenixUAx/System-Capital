@@ -1,0 +1,75 @@
+.service-hero {
+  padding: 150px 0 94px;
+}
+
+.service-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(320px, .78fr);
+  gap: clamp(38px, 7vw, 84px);
+  align-items: center;
+}
+
+.service-hero img {
+  height: clamp(360px, 44vw, 610px);
+  width: 100%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.sticky-note {
+  position: sticky;
+  top: 112px;
+  align-self: start;
+  padding: 28px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.075);
+}
+
+.sticky-note h2 {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+}
+
+.detail-content {
+  display: grid;
+  gap: 34px;
+}
+
+.detail-content article {
+  padding-bottom: 34px;
+  border-bottom: 1px solid var(--border);
+}
+
+.detail-content h2 {
+  font-size: clamp(1.9rem, 3vw, 3.2rem);
+}
+
+.detail-content li {
+  margin-bottom: 10px;
+  color: var(--muted);
+}
+
+.faq {
+  max-width: 860px;
+}
+
+.faq details {
+  border-top: 1px solid var(--border-dark);
+  padding: 22px 0;
+}
+
+.faq summary {
+  cursor: pointer;
+  color: var(--text-dark);
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+@media (max-width: 900px) {
+  .service-hero__grid {
+    grid-template-columns: 1fr;
+  }
+  .sticky-note {
+    position: static;
+  }
+}
