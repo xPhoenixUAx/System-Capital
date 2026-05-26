@@ -106,6 +106,7 @@ p { color: var(--muted); }
 }
 
 .button {
+  --arrow-shift: 6px;
   display: inline-flex;
   min-height: 45px;
   align-items: center;
@@ -130,11 +131,61 @@ p { color: var(--muted); }
   place-items: center;
   border: 1px solid currentColor;
   border-radius: 7px;
+  transform: translateX(0);
+  transition: transform .3s var(--ease);
 }
 
 .button:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(255, 74, 16, .28); }
+.button:hover::before,
+.button:focus-visible::before { transform: translateX(var(--arrow-shift)); }
 .button--ghost { background: var(--black); color: var(--white); border-color: rgba(255,255,255,.2); }
 .button--light { background: var(--white); color: var(--black); border-color: var(--white); }
+
+.button {
+  --arrow-size: 28px;
+  --arrow-offset: 8px;
+  position: relative;
+  padding-inline: 48px;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  left: var(--arrow-offset);
+  top: 50%;
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  border: 1px solid currentColor;
+  border-radius: 7px;
+  transform: translateY(-50%);
+  transition: left .38s var(--ease);
+  display: block;
+  place-items: initial;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--arrow-offset) + 7px);
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E") center / contain no-repeat;
+  transform: translateY(-50%);
+  transition: left .38s var(--ease);
+}
+
+.button:hover::before,
+.button:focus-visible::before {
+  left: calc(100% - var(--arrow-size) - var(--arrow-offset));
+  transform: translateY(-50%);
+}
+
+.button:hover::after,
+.button:focus-visible::after {
+  left: calc(100% - var(--arrow-size) - var(--arrow-offset) + 7px);
+}
 
 .noise { display: none; }
 

@@ -36,3 +36,46 @@ body {
   color: #087b75;
   font-weight: 800;
 }
+
+.legal-page ul {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0 24px;
+  padding-left: 22px;
+  color: var(--muted-dark);
+}
+
+.legal-page li {
+  color: var(--muted-dark);
+}
+
+.legal-page table {
+  display: block;
+  width: 100%;
+  margin: 22px 0 24px;
+  overflow-x: auto;
+  border-collapse: collapse;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 14px;
+  background: rgba(255,255,255,.65);
+}
+
+.legal-page th,
+.legal-page td {
+  min-width: 150px;
+  padding: 13px 14px;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  color: var(--muted-dark);
+  text-align: left;
+  vertical-align: top;
+  font-size: .9rem;
+}
+
+.legal-page th {
+  color: var(--text-dark);
+  font-weight: 900;
+}
+
+.legal-page tr:last-child td {
+  border-bottom: 0;
+}

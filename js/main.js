@@ -143,3 +143,105 @@ if (form) {
     status.textContent = "Please check the required fields and try again.";
   }
 }
+
+const cookieStorageKey = "systemCapitalCookieConsent";
+
+function getCookieConsent() {
+  try {
+    return JSON.parse(localStorage.getItem(cookieStorageKey));
+  } catch (error) {
+    return null;
+  }
+}
+
+function saveCookieConsent(consent) {
+  localStorage.setItem(cookieStorageKey, JSON.stringify({
+    ...consent,
+    updatedAt: new Date().toISOString()
+  }));
+}
+
+function createCookieBanner() {
+  if (document.querySelector("[data-cookie-banner]")) return;
+
+  const banner = document.createElement("section");
+  banner.className = "cookie-banner";
+  banner.dataset.cookieBanner = "";
+  banner.setAttribute("aria-label", "Cookie preferences");
+  banner.innerHTML = `
+    <div class="cookie-banner__inner">
+      <div>
+        <h2>Cookie preferences</h2>
+        <p>We use essential cookies to keep the website working. Analytics and marketing cookies help us improve the site and understand campaign performance. Read our <a href="cookie.html">Cookie Policy</a>.</p>
+      </div>
+      <div class="cookie-banner__actions">
+        <button class="cookie-button" type="button" data-cookie-customize>Customize</button>
+        <button class="cookie-button" type="button" data-cookie-reject>Reject optional</button>
+        <button class="cookie-button cookie-button--primary" type="button" data-cookie-accept>Accept all</button>
+      </div>
+    </div>
+    <div class="cookie-panel">
+      <div class="cookie-panel__inner">
+        <div class="cookie-options">
+          <label class="cookie-option">
+            <span class="cookie-option__top"><strong>Essential</strong><span class="cookie-switch"><input type="checkbox" checked disabled><span></span></span></span>
+            <small>Required for navigation, security, forms and preference storage.</small>
+          </label>
+          <label class="cookie-option">
+            <span class="cookie-option__top"><strong>Analytics</strong><span class="cookie-switch"><input type="checkbox" data-cookie-category="analytics"><span></span></span></span>
+            <small>Helps us understand aggregated website usage and improve content.</small>
+          </label>
+          <label class="cookie-option">
+            <span class="cookie-option__top"><strong>Marketing</strong><span class="cookie-switch"><input type="checkbox" data-cookie-category="marketing"><span></span></span></span>
+            <small>Supports conversion tracking and relevant advertising where enabled.</small>
+          </label>
+        </div>
+        <div class="cookie-banner__actions" style="margin-top: 10px;">
+          <button class="cookie-button cookie-button--primary" type="button" data-cookie-save>Save preferences</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(banner);
+
+  const close = (consent) => {
+    saveCookieConsent(consent);
+    banner.classList.remove("is-visible", "is-customizing");
+    setTimeout(() => banner.remove(), 380);
+  };
+
+  banner.querySelector("[data-cookie-accept]").addEventListener("click", () => {
+    close({ essential: true, analytics: true, marketing: true });
+  });
+
+  banner.querySelector("[data-cookie-reject]").addEventListener("click", () => {
+    close({ essential: true, analytics: false, marketing: false });
+  });
+
+  banner.querySelector("[data-cookie-customize]").addEventListener("click", () => {
+    banner.classList.toggle("is-customizing");
+  });
+
+  banner.querySelector("[data-cookie-save]").addEventListener("click", () => {
+    close({
+      essential: true,
+      analytics: banner.querySelector('[data-cookie-category="analytics"]').checked,
+      marketing: banner.querySelector('[data-cookie-category="marketing"]').checked
+    });
+  });
+
+  requestAnimationFrame(() => banner.classList.add("is-visible"));
+}
+
+if (!getCookieConsent()) {
+  window.addEventListener("load", createCookieBanner);
+}
+
+document.addEventListener("click", (event) => {
+  const trigger = event.target.closest("[data-cookie-settings]");
+  if (!trigger) return;
+  event.preventDefault();
+  localStorage.removeItem(cookieStorageKey);
+  createCookieBanner();
+});

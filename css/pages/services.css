@@ -145,9 +145,18 @@
 
 .service-row p {
   max-width: 650px;
+  margin-bottom: 16px;
   color: #4f5860;
   font-size: .98rem;
   font-weight: 700;
+}
+
+.service-row .button {
+  min-height: 40px;
+  padding: 10px 48px;
+  border-color: var(--black);
+  background: var(--white);
+  color: var(--black);
 }
 
 .service-row ul {
