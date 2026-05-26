@@ -98,7 +98,7 @@ p { color: var(--muted); }
 
 .eyebrow {
   color: var(--orange);
-  font-size: .73rem;
+  font-size: .8rem;
   font-weight: 900;
   letter-spacing: .04em;
   text-transform: uppercase;
@@ -117,7 +117,7 @@ p { color: var(--muted); }
   border-radius: 13px;
   background: var(--orange);
   color: var(--white);
-  font-size: .78rem;
+  font-size: .82rem;
   font-weight: 900;
   text-transform: uppercase;
   transition: transform .28s var(--ease), box-shadow .28s var(--ease), background .28s var(--ease);

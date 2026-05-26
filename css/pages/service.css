@@ -41,7 +41,7 @@
   gap: 10px;
   align-items: center;
   color: rgba(0,0,0,.58);
-  font-size: .78rem;
+  font-size: .82rem;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -89,7 +89,7 @@
 
 .service-detail-visual__card span {
   color: var(--orange);
-  font-size: .72rem;
+  font-size: .8rem;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -117,7 +117,7 @@
   border: 1px solid rgba(0,0,0,.12);
   border-radius: 999px;
   color: var(--black);
-  font-size: .78rem;
+  font-size: .82rem;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -209,7 +209,7 @@
   border-radius: 12px;
   background: var(--orange);
   color: var(--white);
-  font-size: .78rem;
+  font-size: .82rem;
   font-weight: 900;
 }
 
@@ -343,7 +343,7 @@
   display: block;
   margin-bottom: 32px;
   color: var(--orange);
-  font-size: .75rem;
+  font-size: .82rem;
   font-weight: 950;
   text-transform: uppercase;
 }
@@ -553,7 +553,7 @@
   border-radius: 999px;
   background: rgba(255,255,255,.08);
   color: rgba(255,255,255,.72);
-  font-size: .78rem;
+  font-size: .82rem;
   font-weight: 800;
 }
 
