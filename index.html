@@ -429,14 +429,146 @@
         </div>
       </section>
 
-      <section class="final-cta section-dark">
-        <div class="container">
-          <p class="eyebrow reveal">[05] Start</p>
-          <h2 class="reveal">
-            Send the project context. We will review the fit and respond by
-            email.
-          </h2>
-          <a class="button reveal" href="contact.html">Open enquiry form</a>
+      <section class="working-process section-dark">
+        <div class="container process-showcase">
+          <div class="process-copy reveal">
+            <p class="eyebrow">[04] Working process</p>
+            <h2>Our working process</h2>
+            <p>
+              We start with business context, then turn strategy into design,
+              development, launch checks and post-launch improvement.
+            </p>
+          </div>
+          <div class="process-cards">
+            <article class="process-card reveal">
+              <span class="process-number">01</span>
+              <a class="process-link" href="service-detail.html">Explore more</a>
+              <i data-lucide="search-check"></i>
+              <h3>Discovery &amp; Analysis</h3>
+              <p>We clarify the offer, audience, goals, page structure and technical requirements before design begins.</p>
+            </article>
+            <article class="process-card reveal">
+              <span class="process-number">02</span>
+              <a class="process-link" href="services.html#websites">Explore more</a>
+              <i data-lucide="network"></i>
+              <h3>Structure &amp; Content</h3>
+              <p>We plan the sitemap, service sections, CTA flow and content hierarchy so the website is easy to understand.</p>
+            </article>
+            <article class="process-card reveal">
+              <span class="process-number">03</span>
+              <a class="process-link" href="services.html#design">Explore more</a>
+              <i data-lucide="pen-tool"></i>
+              <h3>Interface Design</h3>
+              <p>We create a visual system, responsive layouts and polished sections that match the company’s positioning.</p>
+            </article>
+            <article class="process-card reveal">
+              <span class="process-number">04</span>
+              <a class="process-link" href="services.html#development">Explore more</a>
+              <i data-lucide="code-2"></i>
+              <h3>Development &amp; QA</h3>
+              <p>We build the frontend, connect PHP form processing, check responsiveness, performance and launch details.</p>
+            </article>
+            <article class="process-card process-card--wide reveal">
+              <span class="process-number">05</span>
+              <a class="process-link" href="services.html#support">Explore more</a>
+              <i data-lucide="rocket"></i>
+              <h3>Launch &amp; Support</h3>
+              <p>We prepare the release, monitor the first improvements and keep the digital system ready for updates, campaigns and optimization.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-section">
+        <div class="container faq-layout">
+          <div class="faq-heading reveal">
+            <p class="eyebrow">[05] FAQ</p>
+            <h2>Questions before starting a project</h2>
+            <p>Short answers about scope, pricing, communication and what happens after you submit the enquiry form.</p>
+          </div>
+          <div class="faq-list reveal">
+            <details open>
+              <summary>How do we start working with System Capital?</summary>
+              <div class="faq-answer"><p>Start by submitting the project enquiry form. We review the business context, goals, service fit, budget range and timeline before recommending the next step.</p></div>
+            </details>
+            <details>
+              <summary>Are the prices on the website final?</summary>
+              <div class="faq-answer"><p>No. The packages are approximate starting points. Exact pricing depends on page count, design depth, integrations, content needs, support scope and launch requirements.</p></div>
+            </details>
+            <details>
+              <summary>Can you handle both design and development?</summary>
+              <div class="faq-answer"><p>Yes. The service model covers strategy, web design, frontend development, PHP form processing, launch checks and post-launch support.</p></div>
+            </details>
+            <details>
+              <summary>Do you provide ongoing support after launch?</summary>
+              <div class="faq-answer"><p>Yes. Support can include content updates, technical checks, form monitoring, conversion improvements, analytics review and campaign-related page changes.</p></div>
+            </details>
+            <details>
+              <summary>How is communication handled?</summary>
+              <div class="faq-answer"><p>Initial communication starts through the structured form, then continues by email so project details, scope decisions and next steps stay clear.</p></div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="project-form-section">
+        <img class="contact-hands" src="img/common/contact-hands-cutout.webp" alt="" aria-hidden="true">
+        <div class="contact-ribbon contact-ribbon--orange" aria-hidden="true">
+          <div class="ribbon-track">
+            <div class="ribbon-group"><span>Web Development</span><span>Digital Marketing</span><span>Brand Strategy</span><span>SEO</span><span>Web Design</span><span>Support</span></div>
+            <div class="ribbon-group"><span>Web Development</span><span>Digital Marketing</span><span>Brand Strategy</span><span>SEO</span><span>Web Design</span><span>Support</span></div>
+          </div>
+        </div>
+        <div class="contact-ribbon contact-ribbon--black" aria-hidden="true">
+          <div class="ribbon-track">
+            <div class="ribbon-group"><span>Digital Marketing</span><span>Branding</span><span>Web Design</span><span>SEO</span><span>Development</span><span>Analytics</span></div>
+            <div class="ribbon-group"><span>Digital Marketing</span><span>Branding</span><span>Web Design</span><span>SEO</span><span>Development</span><span>Analytics</span></div>
+          </div>
+        </div>
+        <div class="container project-form-wrap">
+          <form class="project-form-card reveal" action="process-form.php" method="post">
+            <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <p class="eyebrow">[07] Response time: 1 business day</p>
+            <h2>Tell us details about your project</h2>
+            <div class="project-form-grid">
+              <label>Full name *
+                <input required type="text" name="name" placeholder="Your name" autocomplete="name">
+              </label>
+              <label>Email address *
+                <input required type="email" name="email" placeholder="you@example.com" autocomplete="email">
+              </label>
+              <label>Budget range *
+                <select required name="budget_range">
+                  <option value="">Select budget</option>
+                  <option>Under €3,000</option>
+                  <option>€3,000 - €7,500</option>
+                  <option>€7,500 - €15,000</option>
+                  <option>€15,000+</option>
+                  <option>Not sure yet</option>
+                </select>
+              </label>
+              <label>Company
+                <input type="text" name="company" placeholder="Your company" autocomplete="organization">
+              </label>
+              <label class="project-form-wide">Service interest *
+                <select required name="service_interest">
+                  <option value="">Select service</option>
+                  <option>Website creation</option>
+                  <option>Web design</option>
+                  <option>Frontend / backend development</option>
+                  <option>Marketing systems</option>
+                  <option>Support and optimization</option>
+                  <option>Full-cycle project</option>
+                </select>
+              </label>
+              <label class="project-form-wide">Message *
+                <textarea required name="project_details" rows="4" placeholder="Tell us about goals, timeline, current website and what needs to improve."></textarea>
+              </label>
+            </div>
+            <div class="form-bottom">
+              <button class="button" type="submit">Submit now</button>
+            </div>
+          </form>
         </div>
       </section>
     </main>

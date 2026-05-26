@@ -85,6 +85,53 @@ if (pricingToggle && pricingCards.length) {
   });
 }
 
+document.querySelectorAll(".faq-list details").forEach((details) => {
+  const summary = details.querySelector("summary");
+  const answer = details.querySelector(".faq-answer");
+  if (!summary) return;
+
+  if (answer && details.open) {
+    answer.style.height = `${answer.scrollHeight}px`;
+  }
+
+  summary.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (!answer || details.dataset.animating === "true") return;
+
+    details.dataset.animating = "true";
+    const duration = 380;
+    const easing = "cubic-bezier(.2, .8, .2, 1)";
+
+    if (details.open) {
+      const startHeight = answer.scrollHeight;
+      const animation = answer.animate(
+        [{ height: `${startHeight}px` }, { height: "0px" }],
+        { duration, easing }
+      );
+
+      animation.onfinish = () => {
+        answer.style.height = "0px";
+        details.open = false;
+        details.dataset.animating = "false";
+      };
+      return;
+    }
+
+    details.open = true;
+    answer.style.height = "0px";
+    const endHeight = answer.scrollHeight;
+    const animation = answer.animate(
+      [{ height: "0px" }, { height: `${endHeight}px` }],
+      { duration, easing }
+    );
+
+    animation.onfinish = () => {
+      answer.style.height = `${answer.scrollHeight}px`;
+      details.dataset.animating = "false";
+    };
+  });
+});
+
 const form = document.querySelector(".contact-form");
 if (form) {
   const status = form.querySelector(".form-status");
