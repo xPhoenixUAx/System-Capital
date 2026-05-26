@@ -11,6 +11,10 @@ function field(string $key): string {
     return trim((string)($_POST[$key] ?? ''));
 }
 
+function clean_header_value(string $value): string {
+    return str_replace(["\r", "\n"], '', $value);
+}
+
 if (field('website') !== '') {
     header('Location: contact.html?sent=1');
     exit;
@@ -30,6 +34,8 @@ if ($name === '' || $email === '' || $service === '' || $budget === '' || $detai
 
 $to = 'support@systemcapitalmedia.com';
 $subject = 'New project enquiry from systemcapitalmedia.com';
+$safeName = clean_header_value($name);
+$safeEmail = clean_header_value($email);
 $message = "New project enquiry\n\n";
 $message .= "Name: {$name}\n";
 $message .= "Email: {$email}\n";
@@ -40,7 +46,7 @@ $message .= "Project details:\n{$details}\n";
 
 $headers = [
     'From: System Capital Website <support@systemcapitalmedia.com>',
-    'Reply-To: ' . $name . ' <' . $email . '>',
+    'Reply-To: ' . $safeName . ' <' . $safeEmail . '>',
     'Content-Type: text/plain; charset=UTF-8',
 ];
 
