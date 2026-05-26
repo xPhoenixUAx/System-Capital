@@ -2,6 +2,75 @@ const header = document.querySelector("[data-header]");
 const menu = document.querySelector("[data-mobile-menu]");
 const toggle = document.querySelector("[data-menu-toggle]");
 
+function normalizeMobileNavigation() {
+  const nav = menu?.querySelector("nav");
+  if (!nav) return;
+
+  nav.innerHTML = `
+    <a href="index.html">Home</a>
+    <details class="mobile-services-dropdown">
+      <summary>Services</summary>
+      <div class="mobile-services-dropdown__menu">
+        <a href="services.html">All services</a>
+        <a href="web-design-development.html">Web Design & Development</a>
+        <a href="digital-marketing-systems.html">Digital Marketing Systems</a>
+        <a href="frontend-backend-development.html">Frontend / Backend Development</a>
+        <a href="launch-support-optimization.html">Launch Support & Optimization</a>
+      </div>
+    </details>
+    <a href="service-detail.html">Process</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  `;
+}
+
+normalizeMobileNavigation();
+
+const mobileServicesDropdown = menu?.querySelector(".mobile-services-dropdown");
+const mobileServicesSummary = mobileServicesDropdown?.querySelector("summary");
+const mobileServicesPanel = mobileServicesDropdown?.querySelector(".mobile-services-dropdown__menu");
+
+function closeMobileServicesDropdown() {
+  if (!mobileServicesDropdown || !mobileServicesPanel) return;
+  mobileServicesDropdown.classList.remove("is-open");
+  mobileServicesPanel.style.height = `${mobileServicesPanel.scrollHeight}px`;
+  mobileServicesPanel.offsetHeight;
+  mobileServicesPanel.style.height = "0px";
+  window.setTimeout(() => {
+    if (!mobileServicesDropdown.classList.contains("is-open")) {
+      mobileServicesDropdown.removeAttribute("open");
+    }
+  }, 360);
+}
+
+if (mobileServicesDropdown && mobileServicesSummary && mobileServicesPanel) {
+  mobileServicesPanel.style.height = "0px";
+  mobileServicesSummary.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = mobileServicesDropdown.classList.contains("is-open");
+
+    if (isOpen) {
+      closeMobileServicesDropdown();
+      return;
+    }
+
+    mobileServicesDropdown.setAttribute("open", "");
+    mobileServicesDropdown.classList.add("is-open");
+    mobileServicesPanel.style.height = "auto";
+    const height = mobileServicesPanel.scrollHeight;
+    mobileServicesPanel.style.height = "0px";
+    mobileServicesPanel.offsetHeight;
+    mobileServicesPanel.style.height = `${height}px`;
+  });
+
+  mobileServicesPanel.addEventListener("transitionend", (event) => {
+    if (event.propertyName !== "height") return;
+    if (mobileServicesDropdown.classList.contains("is-open")) {
+      mobileServicesPanel.style.height = "auto";
+    }
+  });
+}
+
 if (window.lucide) {
   window.lucide.createIcons();
 }
@@ -21,6 +90,9 @@ if (toggle && menu && header) {
     document.body.style.overflow = isOpen ? "hidden" : "";
     menu.setAttribute("aria-hidden", String(!isOpen));
     toggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    if (!isOpen) {
+      closeMobileServicesDropdown();
+    }
   });
 
   menu.querySelectorAll("a").forEach((link) => {
@@ -30,6 +102,7 @@ if (toggle && menu && header) {
       document.body.style.overflow = "";
       menu.setAttribute("aria-hidden", "true");
       toggle.setAttribute("aria-label", "Open menu");
+      closeMobileServicesDropdown();
     });
   });
 }
