@@ -420,6 +420,148 @@
   font-weight: 700;
 }
 
+.process-hero .service-detail-visual img {
+  filter: saturate(.95) contrast(1.05);
+}
+
+.process-hero {
+  padding: 102px 0 34px;
+}
+
+.process-hero .service-detail-hero__grid {
+  display: block;
+}
+
+.process-hero h1 {
+  max-width: 880px;
+  font-size: clamp(2.25rem, 4vw, 4.35rem);
+  line-height: .98;
+}
+
+.process-hero .service-detail-hero__lead {
+  max-width: 720px;
+  font-size: clamp(.95rem, 1.12vw, 1.08rem);
+}
+
+.process-hero .service-detail-visual {
+  min-height: 330px;
+  border-radius: 24px;
+}
+
+.process-hero .service-detail-visual img {
+  min-height: 330px;
+}
+
+.process-hero .service-detail-visual__card {
+  padding: 16px;
+  border-radius: 18px;
+}
+
+.process-hero .service-detail-visual__card strong {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+}
+
+.process-hero ~ .service-nav-strip {
+  padding: 12px 0;
+}
+
+.process-hero ~ .service-page-section {
+  padding: clamp(56px, 7vw, 86px) 0;
+}
+
+.process-hero ~ .service-page-section .service-intro-grid h2,
+.process-hero ~ .service-page-section .deliverable-feature h2,
+.process-hero ~ .service-page-section .service-faq h2,
+.process-hero ~ .service-cta h2 {
+  font-size: clamp(1.85rem, 3.4vw, 3.45rem);
+}
+
+.process-hero ~ .service-page-section .service-image-card,
+.process-hero ~ .service-page-section .service-image-card img {
+  min-height: 360px;
+}
+
+.process-principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.process-timeline-section {
+  overflow: visible;
+}
+
+.process-timeline-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, .46fr) minmax(0, 1fr);
+  gap: clamp(34px, 6vw, 80px);
+  align-items: start;
+}
+
+.process-sticky-copy {
+  position: sticky;
+  top: 112px;
+}
+
+.process-sticky-copy h2,
+.process-communication h2 {
+  font-size: clamp(1.9rem, 3.4vw, 3.55rem);
+}
+
+.process-timeline {
+  display: grid;
+  gap: 14px;
+}
+
+.process-timeline-item {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 22px;
+  padding: clamp(22px, 3vw, 32px);
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 0 0, rgba(255,74,16,.16), transparent 28%),
+    rgba(255,255,255,.07);
+}
+
+.process-timeline-item > span {
+  color: var(--orange);
+  font-size: clamp(1.65rem, 3vw, 3.4rem);
+  font-weight: 950;
+  line-height: .82;
+  letter-spacing: -.08em;
+}
+
+.process-timeline-item h3 {
+  margin-bottom: 10px;
+  font-size: clamp(1.16rem, 1.55vw, 1.55rem);
+}
+
+.process-timeline-item ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.process-timeline-item li {
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.72);
+  font-size: .78rem;
+  font-weight: 800;
+}
+
+.process-communication {
+  display: grid;
+  gap: 36px;
+}
+
 @media (max-width: 980px) {
   .service-detail-hero__grid,
   .service-intro-grid,
@@ -431,14 +573,31 @@
   }
 
   .service-check-grid,
-  .impact-grid {
+  .impact-grid,
+  .process-principles {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .process-timeline-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .process-sticky-copy {
+    position: static;
   }
 }
 
 @media (max-width: 680px) {
   .service-detail-hero {
     padding: 120px 0 46px;
+  }
+
+  .process-hero {
+    padding: 104px 0 36px;
+  }
+
+  .process-hero h1 {
+    font-size: clamp(2.15rem, 10vw, 3.15rem);
   }
 
   .service-detail-hero__actions,
@@ -463,13 +622,23 @@
     padding: 16px;
   }
 
+  .process-hero .service-detail-visual,
+  .process-hero .service-detail-visual img,
+  .process-hero ~ .service-page-section .service-image-card,
+  .process-hero ~ .service-page-section .service-image-card img {
+    min-height: 280px;
+  }
+
   .service-check-grid,
   .impact-grid,
-  .service-gallery {
+  .service-gallery,
+  .process-principles,
+  .process-timeline-item ul {
     grid-template-columns: 1fr;
   }
 
-  .service-process-item {
+  .service-process-item,
+  .process-timeline-item {
     grid-template-columns: 1fr;
   }
 }
